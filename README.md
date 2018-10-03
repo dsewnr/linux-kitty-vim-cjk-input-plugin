@@ -1,5 +1,5 @@
-# linux-kitty-cjk-input-tool
-Simple tool to help you insert CJK words in Kitty terminal
+# linux-kitty-vim-cjk-input-tool
+Simple tool to help you insert CJK words to vim in Kitty terminal
 
 ## Requirments
 - go
