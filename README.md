@@ -1,28 +1,27 @@
-# linux-kitty-vim-cjk-input-tool
-Simple tool to help you insert CJK words to vim in Kitty terminal
+# linux-kitty-vim-cjk-input-plugin
+Simple script to help you insert CJK words into vim in Kitty terminal
 
 ## Requirments
-- go
 - zenity
-- xclip
 
 ## Installation
 ```
-$ git clone https://github.com/dsewnr/linux-kitty-vim-cjk-input-tool.git
-$ cd linux-kitty-vim-cjk-input-tool/cjkInput
-$ go build -o cjkInput main.go
-$ mv cjkInput /usr/local/bin
+Put CJKInput.vim to your .vimrc
 ```
-And put cjkInput.vim to your .vimrc
+
+## CJKInput.vim
 ```
 function CJKInput()
-    let l:cmd = 'cjkInput'
-    let l:output = system(l:cmd)
-    let l:output = substitute(l:output, '[\r\n]*$', '', '')
-    execute 'normal i' . l:output
+	let l:cmd = 'zenity --entry --text=CJK-Input 2>/dev/null'
+	let l:output = system(l:cmd)
+	let l:output = substitute(l:output, '[\r\n]*$', '', '')
+	execute 'normal i' . l:output
 endfunction
-nmap <silent> \i :call CJKInput()<CR>
+nmap <silent> <leader>i :call CJKInput()<CR>
 ```
+NOTE: dismiss message "Gtk-Message: GtkDialog mapped without a transient parent. This is discouraged." by redirect stderr to /dev/null 
+
+**Thanks for [@MachFour's suggestion](https://github.com/dsewnr/linux-kitty-vim-cjk-input-tool/issues/1).**
 
 ## Demo
 ![](linux-kitty-vim-cjk-input-tool.gif)
